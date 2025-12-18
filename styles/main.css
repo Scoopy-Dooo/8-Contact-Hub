@@ -1,0 +1,293 @@
+/*  ? my variables  */
+:root {
+  --main-color: #6830fa;
+  --main-subtle-color: #c0adf16d;
+  /* --bs-success: #198754; */
+  --bs-success: #08e89d !important;
+}
+body {
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(
+    to top,
+    rgba(100, 250, 200, 0.2),
+    transparent 10%,
+    transparent 90%,
+    rgba(100, 220, 2050, 0.2)
+  );
+  background-attachment: fixed;
+}
+.username{
+    font-family: "Playfair Display", serif;
+
+}
+/* ! my classes */
+.bg-main {
+  background-color: var(--main-color);
+}
+.text-main {
+  color: var(--main-color);
+}
+.bg-main-subtle {
+  background-color: var(--main-subtle-color);
+}
+.text-main {
+  color: var(--main-color) !important;
+}
+.border-main {
+  border-color: var(--main-color) !important;
+}
+.border-main-subtle {
+  border-color: var(--main-subtle-color) !important;
+}
+.my-transition {
+  transition: all 0.3s;
+}
+.p-0.m-0 {
+  padding: 0 !important ;
+  margin: 0 !important ;
+}
+
+/* .bg-fav-subtle {
+  } */
+.my-shadow-1 {
+  box-shadow: 0 1px 10px #9165ff;
+}
+.fs-sm {
+  font-size: 0.875rem;
+}
+.fs-xs {
+  font-size: 0.75rem;
+}
+.w-fit {
+  width: fit-content !important;
+}
+.h-fit {
+  height: fit-content !important;
+}
+.rounded-2_5 {
+  border-radius: var(--bs-border-radius) !important;
+}
+.fav-icon {
+  box-shadow: 0 3px 5px 1px #ffcb9b;
+}
+.emerg-icon {
+  box-shadow: 0 3px 5px 1px #e87086;
+}
+
+/* ! navbar styling */
+nav , footer {
+  backdrop-filter: blur(25px);
+}
+nav figure {
+  width: 40px;
+}
+.nav-icons:hover {
+  background-color: #e9e9e9;
+}
+.my-icon {
+  padding-inline: 0.6rem !important;
+  border-radius: 30% !important;
+}
+nav .btn:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 5px 10px 1px #9165ff;
+}
+.btn-main {
+  transition: 0.3s all;
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--main-color) !important;
+  --bs-btn-border-color: var(--main-color);
+  --bs-btn-hover-color: white;
+  --bs-btn-hover-bg: var(--main-color);
+  --bs-btn-hover-border-color: var(--main-color);
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--main-color);
+  --bs-btn-active-border-color: var(--main-color);
+  /* --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); */
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--main-color);
+  --bs-btn-disabled-border-color: var(--main-color);
+}
+
+/* ! header styling */
+header .total-icon {
+  box-shadow: 0 3px 5px 1px #6aa5ff;
+}
+header .my-icon {
+  padding-inline: 0.8rem !important;
+  padding-block: 0.7rem !important;
+}
+.bg-fav {
+  background-image: linear-gradient(to right, #ffab00, #ff7b00);
+}
+.bg-emerg {
+  background-image: linear-gradient(to right, #fa1649, #ee002c);
+}
+.header-cards {
+  transition: 0.3s all;
+  box-shadow: 0 0 3px 0px rgb(190, 190, 190) inset;
+}
+header .header-cards:hover {
+  box-shadow: 0 2px 3px 0px rgb(190, 190, 190);
+}
+/* ! main styling */
+
+/* ? search */
+.search .form-control:focus {
+  color: rgb(62, 62, 62) !important;
+  background-color: var(--bs-body-bg);
+  border-color: var(--main-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem var(--main-subtle-color);
+}
+.search input {
+  padding: 0.8rem;
+}
+.search input::placeholder {
+  color: rgb(184, 184, 184);
+}
+.search .fa-search {
+  transform: translate(50%, -50%);
+}
+/* ? contact cards  */
+main .header-cards {
+  box-shadow: 0 0px 2px 0px rgb(216, 216, 216) inset;
+}
+main .contacts .cord-of-contact .header-cards:hover {
+  box-shadow: 0 3px 3px 0px rgb(190, 190, 190);
+}
+main .card-footer .my-success-opacity:hover {
+  --bs-bg-opacity: 0.5 !important;
+  --main-subtle-color: #a082ea94;
+}
+main .card .card-body {
+  --bs-warning-rgb: 170, 80, 10;
+}
+main .card .bg-opacity-25 {
+  --bs-bg-opacity: 0.2 !important;
+}
+main .card-footer .delete-btn:hover{
+  background-color: oklch(94.137% 0.02976 12.379) !important;
+  color: oklch(58.6% .253 17.585) !important;
+}
+main .card-footer .update-btn:hover {
+  background-color: oklch(90.84% 0.0452 254.552) !important;
+color: oklch(54.6% .245 262.881) !important;
+}
+
+/*  ! modal styling start */
+
+/* ?valid properties */
+.form-control.is-valid {
+  border-color: #198754 !important;
+  outline: 3px solid #19875468 !important;
+}
+.form-control.is-invalid {
+  border-color: #dc3545 !important;
+  outline: 3px solid #dc354655 !important;
+}
+
+
+
+
+.modal .sticky-top {
+  top: 50px;
+}
+.modal .modal-dialog {
+  height: 90vh;
+}
+.modal ::-webkit-scrollbar {
+  display: none !important;
+}
+.modal .modal-body {
+  height: 80vh;
+}
+
+.modal select,
+.modal textarea,
+.modal .form-control:focus {
+  color: rgb(62, 62, 62) !important;
+  background-color: var(--bs-body-bg);
+  border-color: var(--main-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem var(--main-subtle-color);
+}
+.modal select,
+.modal textarea,
+.modal input {
+  padding: 0.8rem;
+}
+.modal select,
+.modal textarea,
+.modal input::placeholder {
+  color: rgb(149, 149, 149);
+}
+
+.modal .modal-body .btn-light {
+  background-color: #ddd;
+}
+.modal .modal-body .btn-light:hover {
+  background-color: #aaa;
+}
+input[type="checkbox"] {
+  transform: scale(1.5);
+  margin-right: 0.4rem;
+}
+
+.contacts .spans-parent .favorite-span {
+  top: -0.3rem;
+  right: -0.4rem;
+}
+.contacts .spans-parent .emergency-span {
+  bottom: -0.3rem;
+  right: -0.4rem;
+}
+
+main .fav-main .fav-img {
+  height: 45px !important;
+  width: 45px !important;
+}
+main ::-webkit-scrollbar {
+  display: none !important;
+}
+main .fav-contact-parent {
+  max-height: 200px !important ;
+}
+
+main .position-sticky {
+  top: 100px;
+}
+main a {
+  color: inherit !important;
+}
+
+main .emerg-card:hover {
+  background-color: rgb(250, 22, 71, 0.1) !important;
+}
+main .emerg-card:hover .emerg-contact {
+  background-color: #fa1649 !important;
+  color: white !important;
+}
+main .fav-card:hover {
+  background-color: rgb(255, 193, 7, 0.1) !important;
+}
+main .fav-card:hover .fav-contact {
+  background-color: var(--bs-success) !important;
+  color: white !important;
+}
+.toggle-not-fav:hover{
+  background-color: oklch(92.797% 0.00011 271.152) !important;
+  color: oklch(82.8% .189 84.429) !important;
+}
+.toggle-not-emerg:hover{
+  background-color: oklch(91.887% 0.0001 271.152)!important;
+  color: oklch(64.5% .246 16.439) !important;
+}
+
+.toggle-if-fav:hover{
+  background-color:oklch(94.354% 0.09112 96.308) !important;
+}
+.toggle-if-emerg:hover{
+  background-color: oklch(79.214% 0.11998 20.054)!important;
+};

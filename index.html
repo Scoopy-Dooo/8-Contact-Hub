@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--  project title  -->
+  <title>SCO ContactHub</title>
+  <!--  bootstrap -->
+  <link rel="stylesheet" href="./styles/bootstrap.min.css" />
+
+  <!-- favicon -->
+  <link rel="icon" href="./Images/favicon.png" />
+
+  <!--  font awesome  -->
+  <link rel="stylesheet" href="./styles/all.min.css" />
+
+  <!-- google fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!--  main style file  -->
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- MEDIA QUERRY STYLE FILE  -->
+  <link rel="stylesheet" href="styles/media-querry.css" />
+</head>
+
+<body class="pt-5 bg-body-secondary bg-opacity-50" data-bs-spy="scroll" data-bs-target="#navbar-example2"
+  data-bs-root-margin="0px 0px -80%" data-bs-smooth-scroll="true">
+  <!-- ! navbar start  -->
+  <nav
+    class="navbar border-bottom border-1 border-dark border-opacity-10 bg-body-secondary bg-opacity-75 fixed-top py-1 py-md-3">
+    <div class="container-xl d-flex justify-content-between flex-nowrap">
+      <div class="navbar-brand d-flex align-items-center">
+        <span class="my-icon bg-main text-white p-2 text-center me-2"><i
+            class="fs-5 fa-solid fa-contact-book"></i></span>
+        <div>
+          <h2 class="mb-0 fs-4 fw-bold">
+            Contact<span class="text-main">Hub</span>
+          </h2>
+          <p class="mb-0 text-body-tertiary d-none d-sm-block fw-medium fs-xs">
+            Smart Contact Manager
+          </p>
+        </div>
+      </div>
+      <div class="btn-holder d-flex flex-row">
+        <!-- Button trigger modal -->
+        <button onclick="showSubmitBtn()" type="button"
+          class="btn btn-main rounded-3 fw-bold d-flex align-items-center my-shadow-1" data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop">
+          <i class="fa-solid fw-medium fa-plus fs-4"></i> Add
+          <span class="d-none d-sm-inline ms-1">Contact</span>
+        </button>
+        <div class="profile ms-2">
+          <div class="d-flex justify-content-start justify-content-md-end flex-row align-items-center flex-nowrap">
+            <div class="text-body-tertiary d-none d-sm-block">
+              <span class="nav-icons py-2 rounded-3"><i class="fa-solid mx-2 fa-bell"></i></span>
+              <span class="nav-icons py-2 rounded-3"><i class="fa-solid mx-2 fa-gear"></i></span>
+            </div>
+            <figure class="mb-0 rounded-3 ms-sm-2">
+              <img class="w-100 img-fluid rounded-3" src="./Images/avatar-2.jpg" alt="hambozo" />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- ? navbar end  -->
+
+  <!-- ! Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog mt-5">
+      <div class="modal-content">
+        <div class="bg-white modal-header pb-3 border-dark border-opacity-10 sticky-top">
+          <h1 class="bg-white modal-title fw-bold fs-5" id="staticBackdropLabel">
+            Add New Contact
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="bg-white modal-body px-3 mx-2 rounded-bottom-4 overflow-y-scroll">
+          <form id="form">
+            <div class="mb-3 text-center">
+              <div style="width: 100px; height: 100px"
+                class="m-auto d-flex align-items-center justify-content-center mb-2 bg-primary rounded-circle p-5">
+                <i class="text-center display-4 fa-solid fa-user text-white"></i>
+              </div>
+              <label for="inputImage"
+                class="mx-auto w-fit text-nowrap p-2 px-3 rounded-3 bg-secondary fw-medium text-body-secondary fs-sm bg-opacity-10"><i
+                  class="fa-solid fa-camera text-body-tertiary me-2"></i>Change Photo</label>
+              <input class="d-none" type="file" name="" id="inputImage" />
+            </div>
+            <div class="mb-3 NAME">
+              <label for="inputName" class="form-label fw-medium fs-sm">Full Name <span class="text-danger">
+                  *</span></label>
+              <input oninput="checkRegex(this) " type="text" class="form-control rounded-3"
+                placeholder="Enter full name" id="inputName" />
+              <p id="invalidName" class="fs-xs text-danger mt-2 d-none">
+                Name should contain only letters and spaces (2-50 characters)
+              </p>
+            </div>
+            <div class="mb-3 NUMBER">
+              <label for="inputNumber" class="form-label fw-medium fs-sm">Phone Number <span
+                  class="text-danger">*</span></label>
+              <input oninput="checkRegex(this)" type="text" placeholder="e.g., 01012345678"
+                class="form-control rounded-3" id="inputNumber" />
+              <p id="invalidNumber" class="fs-xs text-danger mt-2 d-none">
+                Please enter a valid Egyptian phone number
+              </p>
+            </div>
+            <div class="mb-3 EMAIL">
+              <label for="inputEmail" class="form-label fw-medium fs-sm">Email Address</label>
+              <input oninput="checkRegex(this)" type="email" placeholder="name@example.com"
+                class="form-control rounded-3" id="inputEmail" />
+              <p id="invalidEmail" class="fs-xs text-danger mt-2 d-none">
+                Please enter a valid email address
+              </p>
+            </div>
+            <div class="mb-3 ADDRESS">
+              <label for="inputAddress" class="form-label fw-medium fs-sm">Address</label>
+              <input type="text" placeholder="Enter address" class="form-control rounded-3" id="inputAddress" />
+            </div>
+            <div class="mb-3 GROUP">
+              <label for="inputGroup" class="form-label fw-medium fs-sm">Group</label>
+              <select id="inputGroup" class="form-select w-100 form-control">
+                <option selected value="noGroup">Select a group</option>
+                <option value="Family">Family</option>
+                <option value="Friends">Friends</option>
+                <option value="Work">Work</option>
+                <option value="School">School</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="mb-3 NOTES">
+              <label for="inputNotes" class="form-label fw-medium fs-sm">Notes</label>
+              <textarea class="w-100 rounded-3 form-control fw-medium fs-sm" placeholder="Add notes about this contact"
+                id="inputNotes" rows="3">
+                </textarea>
+            </div>
+            <div class="my-3 checks">
+              <input class="check-input" type="checkbox" name="" id="is_fav" />
+              <label for="is_fav" class="form-label me-3 fw-medium fs-sm"><i class="fa-solid fa-star text-warning"> </i>
+                Favorite</label>
+              <input class="check-input" type="checkbox" name="" id="is_emerg" />
+              <label for="is_emerg" class="form-label fw-medium fs-sm"><i class="fa-solid fa-heart-pulse text-danger">
+                </i>
+                Emergency</label>
+            </div>
+            <div class="bg-white modal-footer px-0 border-0 d-flex flex-sm -row flex-column flex-nowrap gap-2">
+              <button id="submitContactBtn" type="button" data-bs-dismiss="modal"
+                class="btn fw-medium fs-6 rounded-3 w-100 btn-main" onclick=" isValidInputs() ">
+                <i class="fa-solid fa-check me-2"></i>Save Contact
+              </button>
+              <button id="updateContactBtn" type="button" data-bs-dismiss="modal"
+                class="btn fw-medium fs-6 rounded-3 w-100 btn-warning d-none" onclick="saveNewContact()">
+                <i class="fa-solid fa-rotate me-2"></i>update Contact
+              </button>
+              <button type="button" class="btn fw-medium fs-6 rounded-3 btn-light w-100" data-bs-dismiss="modal">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ? modal end -->
+
+  <!-- ! header start  -->
+  <header class="mt-5 pt-md-3 w-100 container-xl">
+    <div class="row row-cols-2 row-cols-md-3 g-3">
+      <div class="col">
+        <div class="header-cards bg-white rounded-4 p-3 d-flex align-items-center">
+          <span class="total-icon my-icon bg-primary text-white text-center me-3">
+            <i class="fs-sm fa-solid fa-users"></i>
+          </span>
+          <div class="my-2">
+            <p class="mb-0 text-body-tertiary fw-medium fs-xs">TOTAL</p>
+            <h2 id="contacts" class="mb-0 fs-4 fw-bold"></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="header-cards bg-white rounded-4 p-3 d-flex align-items-center">
+          <span class="fav-icon my-icon bg-fav bg-primary text-white text-center me-3"><i
+              class="fs-sm fa-solid fa-star"></i></span>
+          <div class="my-2">
+            <p class="mb-0 text-body-tertiary fw-medium fs-xs text-uppercase text-uppercase">
+              Favorites
+            </p>
+            <h2 id="favCounts" class="mb-0 fs-4 fw-bold"></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="header-cards bg-white rounded-4 p-3 d-flex align-items-center">
+          <span class="emerg-icon my-icon bg-emerg text-white text-center me-3"><i
+              class="fs-sm fa-solid fa-heart-pulse"></i></span>
+          <div class="my-2">
+            <p class="mb-0 text-body-tertiary fw-medium fs-xs text-uppercase">
+              Emergency
+            </p>
+            <h2 id="emergCounts" class="mb-0 fs-4 fw-bold"></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ? header end  -->
+
+  <!-- ! main start -->
+  <main class="container-xl w-100 mt-2 mb-5 py-4">
+    <div class="row w-100 g-3">
+      <section class="col-12 col-xl-8 h-100">
+        <div class="section-title">
+          <h2 class=" fw-semibold fs-2 mb-0">Hello <span id="myUser" class="username display-6 fw-bolder text-main"></span></h2>
+          <h1 class="fw-bold fs-2 mb-0">All Contacts</h1>
+         
+          <p class="text-body-tertiary fs-sm fw-medium">
+            Manage and organize your <span id="manage"></span> contacts
+          </p>
+        </div>
+        <div class="section-content">
+          <div class="search position-relative">
+            <span>
+              <i class="ms-1 fa-solid fa-search text-body-tertiary position-absolute top-50"></i>
+            </span>
+            <input oninput="getSearch()" type="text" class="form-control ps-5 rounded-3 text-danger fs-sm fw-medium"
+              placeholder="Search by name, phone, or email..." id="search" />
+          </div>
+          <div class="contacts mt-4">
+            <div id="contactsCard" class="cord-of-contact row g-2">
+              <!-- ! this code come from javaScript -->
+              <!-- <div name="${contactList[i].Name}" class="col-12 col-md-6">
+                <div class="card header-cards rounded-4 bg-white pt-3">
+                  <div
+                    class="card-title ps-3 gap-3 d-flex flex-row flex-nowrap justify-content-start align-items-center">
+                    <figure style="width: 60px" class="mb-0 rounded-4 position-relative">
+                      <div
+                        class="spans-parent position-absolute w-100 top-0 bottom-0 text-end d-flex flex-column justify-content-between"
+                        style="font-size: 8px">
+                        <div class="position-relative w-100 h-100">
+                          <span
+                            class="p-1 favorite-span w-fit position-absolute bg-warning border border-3 border-white rounded-circle"><i
+                              class="fa-solid fa-star text-white"></i>
+                          </span>
+                          <span
+                            class="p-1  emergency-span w-fit position-absolute  bg-emerg border border-3 border-white rounded-circle">
+                            <i class="fa-solid fa-heart-pulse text-white"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <img class="w-100 rounded-4 object-fit-cover" src="./Images/avatar-2.jpg" alt="">
+                    </figure>
+                    <div class="contact_name">
+                      <h5 class="fs-6 fw-bold text-capitalize">Mariko Hoffman</h5>
+                      <p class="mb-0 text-body-tertiary fw-medium">
+                        <span class="fs-xs text-primary bg-primary-subtle p-1 py-2 rounded-2 me-2"><i
+                            class="m-1 fa-solid fa-phone"></i></span>01106516811
+                      </p>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <p class="mb-2 text-body-secondary fw-normal">
+                      <span class="fs-xs text-main bg-main-subtle bg-opacity-10 p-2 rounded-2 me-2"><i
+                          class="fa-solid fa-envelope"></i></span>riciton@mailinator.com
+                    </p>
+                    <p class="mt-3 text-body-secondary fw-normal">
+                      <span class="text-success fs-xs bg-success bg-opacity-25 p-2 rounded-2 me-2"><i
+                          class="fa-solid fa-location-dot"></i></span>Quis id voluptatibus
+                    </p>
+                    <div class="labels fw-medium">
+                      <span class="badge fw-medium text-primary bg-primary-subtle">Family</span>
+                      <span class="badge fw-medium text-danger bg-danger-subtle"><i class="fa-solid fa-heart-pulse"></i>
+                        Emergency</span>
+                    </div>
+                  </div>
+                  <div
+                    class="card-footer d-flex align-items-center justify-content-between py-3 bg-body-secondary bg-opacity-50">
+                    <p class="d-flex align-items-center mb-0">
+                      <span
+                        class="text-success my-transition my-success-opacity fs-sm bg-success bg-opacity-25 p-2 rounded-2 me-2"><i
+                          class="fa-solid fa-phone"></i></span>
+                      <span class="text-main fs-sm my-success-opacity bg-main-subtle p-2 rounded-2 me-2"><i
+                          class="fa-solid fa-envelope"></i></span>
+                    </p>
+                    <div class="card-buttons">
+                      <button name="${contactList[i].Number}" id="favBtn" onclick="makeEmerg(this)"
+                        class="btn trash-btn rounded-2 fs-sm p-2 me-2 my-transition shadow-none ---- text-warning bg-warning-subtle bg-opacity-25 ">
+                        <i class="fa-solid fa-star"></i>
+                      </button>
+
+                      <button name="${contactList[i].Number}" id="emergBtn" onclick="makeFav(this)"
+                        class="btn  fs-sm p-2 rounded-2 me-2  text-danger bg-danger-subtle"><i
+                          class="fa-solid fa-heart-pulse"></i>
+                      </button>
+
+                      <button name="${contactList[i].Number}" id="updateBtn" onclick="updateContact(this)"
+                        class="btn update-btn my-transition fs-sm p-2 rounded-2 me-2 text-secondary bg-body-secondary bg-opacity-25"><i
+                          class="fa-solid fa-pencil"></i>
+                      </button>
+
+                      <button name="${contactList[i].Number}" id="deleteBtn" onclick="deleteContact(this)"
+                        class="btn delete-btn fs-sm  p-2 rounded-2 me-2 shadow-none text-secondary bg-body-secondary bg-opacity-25 ">
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- <section style="height: 100;" class="col-12 col-xl-4  "> -->
+      <section class="col-12 col-xl-4">
+        <div class="position-sticky h-fit">
+          <div class="favorite-contacts mb-4 bg-white rounded-4">
+            <div
+              class="fav-header border-0 btn-outline-light bg-warning bg-opacity-10 rounded-top-4 p-3 d-flex align-items-center">
+              <span class="fav-icon py-2 my-icon bg-fav bg-primary text-white text-center me-3"><i
+                  class="fs-sm fa-solid fa-star"></i></span>
+              <div class="my-2">
+                <h2 class="mb-1 fs-6 fw-semibold">Favorites</h2>
+                <p style="font-size: 0.8rem" class="mb-0 text-body-tertiary fw-medium">
+                  Quick access to starred contacts
+                </p>
+              </div>
+            </div>
+            <div class="fav-main fav-contact-parent overflow-y-scroll bg-white w-100 bg-white p-3 rounded-bottom-4">
+              <div id="favContacts" class="row row-cols-1 row-cols-md-2 row-cols-xl-1">
+                <!-- <div class="col">
+                  <div class="mb-2 fav-card bg-body-tertiary p-2 rounded-4 d-flex flex-row justify-content-between">
+                    <div class="rounded-4 bg d-flex  gap-2 align-items-center">
+                      <div class="fav-img rounded-3 bg-main ">
+                        <img class="w-100 h-100 rounded-3 object-fit-contain" src="./Images/avatar-2.jpg" alt="hambozo">
+                        <p class=" text-white text-center mt-1 mb-0 fs-5 fw-bold">sw</p>
+                      </div>
+                      <div>
+                        <h6 class="mb-0 text-capitalize text-dark">Honorato Pollardw</h6>
+                        <p class="mb-0 fs-sm text-body-tertiary fw-medium">01015616544</p>
+                      </div>
+                    </div>
+                    <div class="fav-contact rounded-3 bg-success-subtle text-success mt-1 h-fit p-2 fs-sm">
+                      <a class=" " href="tel:01501904879">
+                        <i class=" fa-solid  fa-phone"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="emergency-contacts bg-white rounded-4">
+            <div class="emerg-header border-0 bg-danger bg-opacity-10 rounded-top-4 p-3 d-flex align-items-center">
+              <span class="emerg-icon py-2 my-icon bg-emerg text-white text-center me-3"><i
+                  class="fs-sm fa-solid fa-heart-pulse"></i></span>
+              <div class="my-2">
+                <h2 id="" class="mb-1 fs-6 fw-semibold">Emergency</h2>
+                <p style="font-size: 0.8rem" class="mb-0 text-body-tertiary fw-medium">
+                  Important contacts for urgent calls
+                </p>
+              </div>
+            </div>
+            <div class="fav-main fav-contact-parent overflow-y-scroll bg-white w-100 bg-white p-3 rounded-bottom-4">
+              <div class="no-emerg w-100"></div>
+              <div id="emergContacts" class="row row-cols-1 row-cols-md-2 row-cols-xl-1">
+                <!--               
+                <div class="col">
+                  <div class="mb-2 emerg-card bg-body-tertiary p-2 rounded-4 d-flex flex-row justify-content-between">
+                    <div class="rounded-4 bg d-flex  gap-2 align-items-center">
+                      <div class="fav-img rounded-3 bg-main ">
+                        <img class="w-100 h-100 rounded-3 object-fit-contain" src="./Images/avatar-2.jpg" alt="hambozo">
+                        <p class=" text-white text-center mt-1 mb-0 fs-5 fw-bold">sw</p>
+                      </div>
+                      <div>
+                        <h6 class="mb-0 text-capitalize text-dark">Honorato Pollardw</h6>
+                        <p class="mb-0 fs-sm text-body-tertiary fw-medium">01015616544</p>
+                      </div>
+                    </div>
+                    <div class="emerg-contact rounded-3 text-danger bg-danger-subtle mt-1 h-fit p-2 fs-sm">
+                      <a class="" href="tel:01501904879">
+                        <i class=" fa-solid  fa-phone"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <!-- ? main end -->
+
+  <footer class=" text-center py-2 bg-black bg-opacity-10 text-main fw-bolder fixed-bottom   ">
+<p class="mb-0"> all rights reserved @ scoopyDoo </p>
+  </footer>
+  <!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
+
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
